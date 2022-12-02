@@ -10,7 +10,7 @@ int main()
 
     std::vector<float> v = read_file<float>("input.txt");
 
-    for (int i = 1; i < v.size(); i++)
+    for (int i = 0; i < v.size(); i++)
     {
         std::cout << v[i] << std::endl;
     }
