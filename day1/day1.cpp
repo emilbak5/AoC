@@ -17,7 +17,6 @@ int main()
     std::vector<std::string> v = read_file<std::string>("input.txt");
 
     std::vector<int> temp;
-
     std::vector<int> calories;
     int sum = 0;
 
