@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<numeric>
+#include <algorithm>    // std::sort
 
 #include "../read_file.hpp"
 
@@ -15,13 +16,11 @@ int main()
 
     std::vector<std::string> v = read_file<std::string>("input.txt");
 
-    std::vector<Gnome> gnomes;
     std::vector<int> temp;
+
+    std::vector<int> calories;
     int sum = 0;
 
-    Gnome temp_gnome;
-
-    int index = 1;
     for (size_t i = 0; i < v.size(); i++)
     {
         if (v[i] != "")
@@ -31,38 +30,15 @@ int main()
         else
         {
             sum = std::accumulate(temp.begin(), temp.end(), 0);
-            temp_gnome.calories = sum; 
-            temp_gnome.index = index;        
-            gnomes.push_back(temp_gnome);
+            calories.push_back(sum);
             temp.clear();
-            index++;
         }
     }
 
-    Gnome one;
-    Gnome two;
-    Gnome three;
+    std::sort(calories.rbegin(), calories.rend());
 
-    for (Gnome gnome : gnomes)
-    {
-        if (gnome.calories > one.calories)
-        {
-            three = two;
-            two = one;
-            one = gnome;
-        }
-        else if (gnome.calories > two.calories)
-        {
-            three = two;
-            two = gnome;
-        }
-        else if (gnome.calories > three.calories)
-        {
-            three =  gnome;
-        }
-    }
-    std::cout << one.calories << std::endl;
-    std::cout << one.calories + two.calories + three.calories << std::endl;
+    std::cout << calories[0] << std::endl;
+    std::cout << calories[0] + calories[1] + calories[2] << std::endl; 
 
 
     return 0;
