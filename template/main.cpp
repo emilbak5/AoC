@@ -8,7 +8,7 @@
 int main()
 {
 
-    std::vector<float> v = read_file<float>("input.txt");
+    std::vector<std::string> v = read_file<std::string>("input.txt");
 
     for (int i = 0; i < v.size(); i++)
     {
